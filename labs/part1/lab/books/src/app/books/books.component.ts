@@ -11,18 +11,19 @@ import { Book } from './book';
 })
 export class BooksComponent implements OnInit {
 
-  book$: Subscription;
+  book$: Observable<Book[]>;
   books: Book[] = [];
 
   constructor(public service: BooksService) {  }
 
   ngOnInit() {
-    this.getBooks();
+    // this.getBooks();
+    this.book$ = this.service.getBooks();
   }
 
-  public getBooks(): void {
-    this.service.getBooks()
-      .subscribe(data => this.books = data);
-  }
+  // public getBooks(): void {
+  //   this.service.getBooks()
+  //     .subscribe(data => this.books = data);
+  // }
 
 }

@@ -6,7 +6,6 @@ import { Book } from './book';
 })
 export class BooksSortPipe implements PipeTransform  {
   transform(books: Book[]): Book[] {
-    console.log([...books.sort()]);
-    return [...books].sort((a, b) => a.title.localeCompare(b.title));
+    return books ? [...books].sort((a, b) => a.title.localeCompare(b.title)) : [];
   }
 }
